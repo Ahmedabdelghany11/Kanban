@@ -123,10 +123,14 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--main-color);
+  background-color: var(--third-color);
   box-shadow: 0 0 4px 1px var(--secondary-color) inset;
   border-radius: 5px;
   transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -187,15 +191,18 @@ button {
   margin-right: 20px;
 }
 
-.column_heading.done > svg {
+.column_heading.done > svg,
+.column_heading.next > svg {
   color: var(--done-color);
 }
 
-.column_heading.doing > svg {
+.column_heading.doing > svg,
+.column_heading.now > svg {
   color: var(--doing-color);
 }
 
-.column_heading.todo > svg {
+.column_heading.todo > svg,
+.column_heading.later > svg {
   color: var(--todo-color);
 }
 

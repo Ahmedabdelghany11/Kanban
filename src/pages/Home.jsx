@@ -1,11 +1,22 @@
-import BoardColumn from "../ui/BoardColumn"
+import { useEffect } from "react";
+import useBroadsList from "../features/useBroadsList";
+import Spinner from "../ui/Spinner";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 function Home() {
+  const {isLoading, broads} = useBroadsList();
+  const {id} = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!id && broads) navigate(`/${broads[0].id}`)
+  }, [broads, id, navigate])
+
+  if (isLoading) return <Spinner />
+
   return (
-    <div className={`home hidescrollbar flex-1 relative p-5 flex items-start gap-5 overflow-auto`}>
-      <BoardColumn name="todo" />
-      <BoardColumn name="doing" />
-      <BoardColumn name="done" />
+    <div className={`home h-full flex-1 relative p-5 pb-36 gap-5 overflow-auto`}>
+      <Outlet />
     </div>
   )
 }

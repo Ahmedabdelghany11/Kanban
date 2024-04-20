@@ -3,24 +3,35 @@ import logoPath from "/logo-mobile.svg"
 import { useState } from "react";
 import TaskForm from "./TaskForm";
 import Modal from "./Modal";
+import Spinner from "./Spinner";
+import useBroadsList from "../features/useBroadsList";
+import { Link } from "react-router-dom";
 
 function Header() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const {isLoading, broads} = useBroadsList();
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  
   function handleOpenForm() {
     setIsFormOpen(true);
   }
-
+  
   function handleCloseForm() {
     setIsFormOpen(false);
   }
-
+  
+  if(isLoading) return <Spinner />
   return (
     <header className={`h-20 p-5 bg-[var(--secondary-color)] shadow-[1px_0_1px_0_var(--text-color)] flex items-center justify-between`}>
-      <img src={logoPath} alt={"Kanban"} className={`w-8 inline-block sm:hidden`} />
+      <Link to="/"  className={`inline-block sm:hidden`}>
+        <img src={logoPath} alt={"Kanban"} className={`w-8`} />
+      </Link>
           <select className={`text-md tracking-wide inline-block sm:hidden bg-[var(--secondary-color)]`}>
-            <option value="Platform Launch">Platform Launch</option>
-            <option value="Marketing Plan">Marketing Plan</option>
+            {broads &&
+              broads.map(broad => (
+                <option value={broad.id} key={broad.id}>{broad.name}</option>
+              ))
+            }
             <option value="Roadmap">Roadmap</option>
           </select>
           <h3 className={`text-xl tracking-wide sm:inline-block hidden`}>Platform Launch</h3>

@@ -1,14 +1,18 @@
 import { GoDotFill } from "react-icons/go"
 import TaskItem from "./TaskItem"
 
-function BoardColumn({name}) {
+function BoardColumn({column}) {
   return (
-    <div className={`flex items-center flex-col gap-5 relative min-w-[30%]`}>
-      <h4 className={`column_heading ${name} w-full flex items-center justify-start gap-2 text-base font-bold tracking-wider`}>
+    <div className={`flex items-center flex-col gap-5 relative min-w-[300px]`}>
+      <h4 className={`column_heading ${column.name.toLowerCase()} w-full flex items-center justify-start gap-2 text-base font-bold tracking-wider`}>
         <GoDotFill className="text-3xl" />
-        {name.toUpperCase()} (4)
+        {column.name.toUpperCase()} ({column?.tasks?.length || 0})
       </h4>
-      <TaskItem />
+      {column?.tasks &&
+        column?.tasks?.map(task => (
+          <TaskItem key={task.title} task={task} />
+        ))
+      }
     </div>
   )
 }
