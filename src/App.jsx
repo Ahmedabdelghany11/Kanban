@@ -5,6 +5,7 @@ import Spinner from "./ui/Spinner";
 import Home from "./pages/Home";
 import AppLayout from "./ui/AppLayout";
 import ErrorPage from "./pages/ErrorPage";
+import "./styles/index.css"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

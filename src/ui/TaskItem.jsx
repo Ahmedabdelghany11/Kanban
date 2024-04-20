@@ -1,9 +1,9 @@
-function Home() {
+function TaskItem() {
   return (
     <div className={``}>
-        Home
+        
     </div>
   )
 }
 
-export default Home
+export default TaskItem

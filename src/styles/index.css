@@ -8,15 +8,25 @@
 @import 'tailwindcss/utilities';
 
 :root {
+  --todo-color: #3cbdf7;
+  --doing-color: #8e59ef;
+  --done-color: #68efb5;
+  --third-color: #645fc6;
+
+  --overlay-background: rgba(0, 0, 0, 0.4);
   --main-transition: 0.3s
 }
 
 :root, :root.light-mode {
-  
+  --main-color: #f4f7fe;
+  --secondary-color: #ffffff;
+  --text-color: #21212d;
 }
 
 :root.dark-mode {
-  
+  --main-color: #21212d;
+  --secondary-color: #2c2c38;
+  --text-color: #ffffff;
 }
 
 * {
@@ -44,8 +54,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   min-height: 100vh;
-  background-color: var(--color-grey-100);
-  color: var(--color-grey-900);
+  background-color: var(--main-color);
+  color: var(--text-color);
   position: relative;
 }
 
@@ -109,18 +119,18 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--color-grey-100);
+  background-color: var(--secondary-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-grey-300);
-  box-shadow: 0 0 4px 1px var(--color-grey-400) inset;
+  background-color: var(--main-color);
+  box-shadow: 0 0 4px 1px var(--secondary-color) inset;
   border-radius: 5px;
   transition: var(--main-transition);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  box-shadow: 0 0 6px 1px var(--color-grey-500) inset;
+  box-shadow: 0 0 6px 1px var(--secondary-color) inset;
 }
 
 #root {
@@ -158,4 +168,25 @@ button {
     transform: rotate(360deg);
   }
 }
+}
+
+.nav_link {
+  padding: 8px 12px;
+  border-radius: 0 12px 12px 0;
+  -webkit-border-radius: 0 12px 12px 0;
+  -moz-border-radius: 0 12px 12px 0;
+  -ms-border-radius: 0 12px 12px 0;
+  -o-border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.nav_link.active {
+  background-color: var(--third-color);
+  color: #fff;
+  margin-right: 20px;
 }
