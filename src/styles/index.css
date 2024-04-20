@@ -140,11 +140,7 @@ button {
 
 @layer components {
   .input {
-    @apply basis-[80%] py-1 px-3 rounded-lg indent-3 text-base shadow-[0_0_2px_1px_var(--color-grey-500)] bg-gray-200 text-black border-none outline-none transition-[var(--main-transition)] focus:shadow-[0_0_6px_1px_var(--color-grey-500)] disabled:bg-gray-500
-  }
-  
-  .button {
-    @apply w-full mx-auto py-2 px-3 rounded-lg transition-[var(--main-transition)] text-base font-bold flex items-center justify-center gap-[10px] cursor-pointer
+    @apply w-full py-1 px-3 rounded-md indent-3 text-base bg-[var(--secondary-color)] text-[var(--text-color)] shadow-[0_0_1px_0_var(--text-color)] border-none outline-none transition-[var(--main-transition)] disabled:bg-gray-500
   }
 
 .spinner {
@@ -189,4 +185,25 @@ button {
   background-color: var(--third-color);
   color: #fff;
   margin-right: 20px;
+}
+
+.column_heading.done > svg {
+  color: var(--done-color);
+}
+
+.column_heading.doing > svg {
+  color: var(--doing-color);
+}
+
+.column_heading.todo > svg {
+  color: var(--todo-color);
+}
+
+.hidescrollbar::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.hidescrollbar::-webkit-scrollbar-horizontal {
+  height: 0;
 }

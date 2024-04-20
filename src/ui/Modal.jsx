@@ -4,8 +4,8 @@ function Modal({children}) {
   return (
     <Overlay>
       <div
-        className={`modal_window w-full h-[100vh] fixed text-white flex items-center justify-center 
-        overflow-y-auto scrollbar-none transition-[var(--main-transition)]`}
+        className={`p-20 modal_window w-full h-[100vh] fixed text-white flex items-start justify-center 
+        overflow-y-auto hidescrollbar transition-[var(--main-transition)]`}
       >
         {children}
       </div>
