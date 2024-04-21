@@ -1,12 +1,8 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://0.0.0.0:4000/",
-});
-
 export async function fetchBroads() {
     try {
-        const req = await api.get(`boards`);
+        const req = await axios.get(`http://localhost:4000/boards`);
 
         return req.data;
     } catch (err) {
@@ -16,7 +12,7 @@ export async function fetchBroads() {
 
 export async function fetchBroadByID(id) {
     try {
-        const req = await api.get(`boards/${id}`);
+        const req = await axios.get(`http://localhost:4000/boards/${id}`);
 
         return req.data;
     } catch (err) {
