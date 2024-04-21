@@ -1,10 +1,8 @@
-import axios from "axios";
+import boardsData from "../server/db.json";
 
 export async function fetchBroads() {
     try {
-        const req = await axios.get(`http://localhost:4000/boards`);
-
-        return req.data;
+        return boardsData.boards;
     } catch (err) {
         throw new Error(`Error fetching boards: ${err.message}`);
     }
@@ -12,10 +10,12 @@ export async function fetchBroads() {
 
 export async function fetchBroadByID(id) {
     try {
-        const req = await axios.get(`http://localhost:4000/boards/${id}`);
-
-        return req.data;
+        const board = boardsData.boards.find(board => board.id === +id);
+        if (!board) {
+            throw new Error(`Board with ID ${id} not found`);
+        }
+        return board;
     } catch (err) {
-        throw new Error(`Error fetching boards: ${err.message}`);
+        throw new Error(`Error fetching board with ID ${id}: ${err.message}`);
     }
 }
